@@ -1,0 +1,23 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "LIRI (Language Interpretation and Recognition Interface) - a command-line interface that allows users to access information from various APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MPPennella/liri-node-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MPPennella/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/MPPennella/liri-node-app#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0"
+  }
+}
