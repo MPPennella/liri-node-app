@@ -4,7 +4,7 @@ let keys = require("./keys")
 let Spotify = require("node-spotify-api")
 let spotify = new Spotify(keys.spotify)
 
-require("request")
+let request = require("request")
 require("moment")
 
 let cmd = process.argv[2]
@@ -67,7 +67,14 @@ function spotifyCommand() {
  * Handler for OMDB API command - 
  */
 function omdbCommand() {
-    console.log("COMING SOON - OMDB")
+    let title = "Mr. Nobody";
+    if (process.argv[3]) title = process.argv[3]
+
+    let omdbURL = `https://www.omdbapi.com/?t=${title}&y=&plot=short&apikey=${keys.omdb.apiKey}`
+
+    request(omdbURL, (error, response, body) => {
+        console.log("BODY", JSON.parse(body))
+    })
 }
 
 /*
