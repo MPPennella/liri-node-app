@@ -73,7 +73,25 @@ function omdbCommand() {
     let omdbURL = `https://www.omdbapi.com/?t=${title}&y=&plot=short&apikey=${keys.omdb.apiKey}`
 
     request(omdbURL, (error, response, body) => {
-        console.log("BODY", JSON.parse(body))
+        if (error) {
+            return console.log(error)
+        }
+
+        let movie = JSON.parse(body)
+
+        console.log("TITLE: "+movie.Title)
+        console.log("YEAR: "+movie.Year)
+        console.log("IMDB Rating: "+movie.imdbRating)
+        if (movie.Ratings.length>=2) {
+            console.log("Rotten Tomatoes Rating: "+movie.Ratings[1].Value)
+        } else {
+            console.log("Rotten Tomatoes Rating: Not available")
+        }
+        console.log("COUNTRY: "+movie.Country)
+        console.log("LANGUAGE: "+movie.Language)
+        console.log("PLOT: "+movie.Plot)
+        console.log("ACTORS: "+movie.Actors)
+        
     })
 }
 
