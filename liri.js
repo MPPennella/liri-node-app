@@ -11,16 +11,16 @@ let cmd = process.argv[2]
 
 switch (cmd) {
     case "concert-this":
-        ;
+        bandsInTownCommand();
         break;
     case "spotify-this-song":
         spotifyCommand();
         break;
     case "movie-this":
-        ;
+        omdbCommand();
         break;
     case "do-what-it-says":
-        ;
+        doItCommand();
         break;
     default:
         console.log(`Invalid command '${cmd}', valid commands are as follows:`);
@@ -32,7 +32,14 @@ switch (cmd) {
 }
 
 /*
- * Handler for Spotify command - takes a song name, searches Spotify API, and displays Artist name, Song name, preview link, Album name
+ * Handler for Bands In Town API command - 
+ */
+function bandsInTownCommand() {
+    console.log("COMING SOON - BANDS IN TOWN")
+}
+
+/*
+ * Handler for Spotify API command - takes a song name, searches Spotify API, and displays Artist name, Song name, preview link, Album name
  */
 function spotifyCommand() {
     let song = "The Sign Ace of Base";
@@ -54,5 +61,18 @@ function spotifyCommand() {
         }
     });
 
+}
 
+/*
+ * Handler for OMDB API command - 
+ */
+function omdbCommand() {
+    console.log("COMING SOON - OMDB")
+}
+
+/*
+ * Handler for do-what-it-says command - 
+ */
+function doItCommand() {
+    console.log("COMING SOON - do-what-it-says")
 }
