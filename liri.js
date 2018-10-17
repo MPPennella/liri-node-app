@@ -35,7 +35,11 @@ switch (cmd) {
  * Handler for Bands In Town API command - 
  */
 function bandsInTownCommand() {
-    console.log("COMING SOON - BANDS IN TOWN")
+    let artist = ""
+    if (process.argv[3]) artist = process.argv[3]
+    console.log(keys.bandsInTown.appID)
+
+
 }
 
 /*
