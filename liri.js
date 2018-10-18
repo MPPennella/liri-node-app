@@ -5,7 +5,7 @@ let Spotify = require("node-spotify-api")
 let spotify = new Spotify(keys.spotify)
 
 let request = require("request")
-require("moment")
+let moment = require("moment")
 
 let cmd = process.argv[2]
 
@@ -62,7 +62,8 @@ function logEvent(event)  {
     console.log()
     console.log(event.venue.name)
     console.log(`${event.venue.city}, ${event.venue.region}, ${event.venue.country}`)
-    console.log(event.datetime)
+    let date = moment(event.datetime)
+    console.log(date)
 }
 
 /*
