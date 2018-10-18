@@ -38,16 +38,31 @@ function bandsInTownCommand() {
     let artist = "REO Speedwagon"
     if (process.argv[3]) artist = process.argv[3]
     
-    let bitURL = `http://rest.bandsintown.com/artists/${artist}/events?app_id=${keys.bandsInTown.appID}`
+    let bitURL = `http://rest.bandsintown.com/artists/${artist}/events?app_id=${keys.bandsInTown.appID}&date=upcoming`
 
     request(bitURL, (error, response,body) => {
         if (error) {
             return console.log(error)
         }
+
         let events = JSON.parse(body)
-        console.log(events)
+
+        if (events.length>0) {
+            console.log(`UPCOMING EVENTS FOR ${artist}:`)
+            events.map(logEvent)
+        } else {
+            console.log(`No events found for artist "${artist}"`)
+        }
     })
 
+}
+
+// Helper function for logging Bands in Town event info
+function logEvent(event)  {
+    console.log()
+    console.log(event.venue.name)
+    console.log(`${event.venue.city}, ${event.venue.region}, ${event.venue.country}`)
+    console.log(event.datetime)
 }
 
 /*
