@@ -62,8 +62,7 @@ function logEvent(event)  {
     console.log()
     console.log(event.venue.name)
     console.log(`${event.venue.city}, ${event.venue.region}, ${event.venue.country}`)
-    let date = moment(event.datetime)
-    console.log(date)
+    console.log( moment(event.datetime).format("MM/DD/YYYY") )
 }
 
 /*
