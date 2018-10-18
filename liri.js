@@ -10,27 +10,31 @@ let moment = require("moment")
 let fs = require("fs")
 
 let cmd = process.argv[2]
+main(cmd)
 
-switch (cmd) {
-    case "concert-this":
-        bandsInTownCommand();
-        break;
-    case "spotify-this-song":
-        spotifyCommand();
-        break;
-    case "movie-this":
-        omdbCommand();
-        break;
-    case "do-what-it-says":
-        doItCommand();
-        break;
-    default:
-        console.log(`Invalid command '${cmd}', valid commands are as follows:`);
-        console.log("* concert-this [artist name]");
-        console.log("* spotify-this-song [song name]");
-        console.log("* movie-this [movie name]");
-        console.log("* do-what-it-says");
-        break;
+// Main controller for executing different commands
+function main(cmd) {
+    switch (cmd) {
+        case "concert-this":
+            bandsInTownCommand();
+            break;
+        case "spotify-this-song":
+            spotifyCommand();
+            break;
+        case "movie-this":
+            omdbCommand();
+            break;
+        case "do-what-it-says":
+            doItCommand();
+            break;
+        default:
+            console.log(`Invalid command '${cmd}', valid commands are as follows:`);
+            console.log("* concert-this [artist name]");
+            console.log("* spotify-this-song [song name]");
+            console.log("* movie-this [movie name]");
+            console.log("* do-what-it-says");
+            break;
+    }
 }
 
 /*
@@ -135,7 +139,8 @@ function doItCommand() {
 
         let i = file.indexOf(",")
         let command = file.slice(0,i)
-        let value = file.slice(i+1)
-        console.log(command, value)
+        let argument = file.slice(i+1)
+        
+        main(command)
     })
 }
