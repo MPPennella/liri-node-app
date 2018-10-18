@@ -7,6 +7,8 @@ let spotify = new Spotify(keys.spotify)
 let request = require("request")
 let moment = require("moment")
 
+let fs = require("fs")
+
 let cmd = process.argv[2]
 
 switch (cmd) {
@@ -126,5 +128,10 @@ function omdbCommand() {
  * Handler for do-what-it-says command - 
  */
 function doItCommand() {
-    console.log("COMING SOON - do-what-it-says")
+    fs.readFile("./random.txt", "utf8", (error, file) => {
+        if (error) {
+            return console.log(error)
+        }
+        console.log(file)
+    })
 }
