@@ -17,13 +17,13 @@ main(cmd, arg)
 function main(cmd, arg) {
     switch (cmd) {
         case "concert-this":
-            bandsInTownCommand();
+            bandsInTownCommand(arg);
             break;
         case "spotify-this-song":
             spotifyCommand(arg);
             break;
         case "movie-this":
-            omdbCommand();
+            omdbCommand(arg);
             break;
         case "do-what-it-says":
             doItCommand();
@@ -41,9 +41,9 @@ function main(cmd, arg) {
 /*
  * Handler for Bands In Town API command - 
  */
-function bandsInTownCommand() {
-    let artist = "REO Speedwagon"
-    if (process.argv[3]) artist = process.argv[3]
+function bandsInTownCommand(artist) {
+    if(!artist) artist = "REO Speedwagon"
+    // if (process.argv[3]) artist = process.argv[3]
     
     let bitURL = `http://rest.bandsintown.com/artists/${artist}/events?app_id=${keys.bandsInTown.appID}&date=upcoming`
 
@@ -105,9 +105,9 @@ function spotifyCommand(song) {
 /*
  * Handler for OMDB API command - 
  */
-function omdbCommand() {
-    let title = "Mr. Nobody";
-    if (process.argv[3]) title = process.argv[3]
+function omdbCommand(title) {
+    if (!title) title = "Mr. Nobody";
+    // if (process.argv[3]) title = process.argv[3]
 
     let omdbURL = `https://www.omdbapi.com/?t=${title}&y=&plot=short&apikey=${keys.omdb.apiKey}`
 
