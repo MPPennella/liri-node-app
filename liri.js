@@ -55,10 +55,10 @@ function bandsInTownCommand(artist) {
         let events = JSON.parse(body)
 
         if (events.length>0) {
-            console.log(`UPCOMING EVENTS FOR ${artist}:`)
+            console.log(`UPCOMING EVENTS FOR: ${artist}:`)
             events.map(logEvent)
         } else {
-            console.log(`No events found for artist "${artist}"`)
+            console.log(`NO EVENTS FOUND FOR ARTIST: "${artist}"`)
         }
     })
 
@@ -120,11 +120,11 @@ function omdbCommand(title) {
 
         console.log("TITLE: "+movie.Title)
         console.log("YEAR: "+movie.Year)
-        console.log("IMDB Rating: "+movie.imdbRating)
+        console.log("IMDB RATING: "+movie.imdbRating)
         if (movie.Ratings.length>=2) {
-            console.log("Rotten Tomatoes Rating: "+movie.Ratings[1].Value)
+            console.log("ROTTEN TOMATOES RATING: "+movie.Ratings[1].Value)
         } else {
-            console.log("Rotten Tomatoes Rating: Not available")
+            console.log("ROTTEN TOMATOES RATING: Not available")
         }
         console.log("COUNTRY: "+movie.Country)
         console.log("LANGUAGE: "+movie.Language)
