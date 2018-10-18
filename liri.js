@@ -132,6 +132,10 @@ function doItCommand() {
         if (error) {
             return console.log(error)
         }
-        console.log(file)
+
+        let i = file.indexOf(",")
+        let command = file.slice(0,i)
+        let value = file.slice(i+1)
+        console.log(command, value)
     })
 }
