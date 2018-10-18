@@ -10,16 +10,17 @@ let moment = require("moment")
 let fs = require("fs")
 
 let cmd = process.argv[2]
-main(cmd)
+let arg = process.argv[3]
+main(cmd, arg)
 
 // Main controller for executing different commands
-function main(cmd) {
+function main(cmd, arg) {
     switch (cmd) {
         case "concert-this":
             bandsInTownCommand();
             break;
         case "spotify-this-song":
-            spotifyCommand();
+            spotifyCommand(arg);
             break;
         case "movie-this":
             omdbCommand();
@@ -74,9 +75,8 @@ function logEvent(event)  {
 /*
  * Handler for Spotify API command - takes a song name, searches Spotify API, and displays Artist name, Song name, preview link, Album name
  */
-function spotifyCommand() {
-    let song = "The Sign Ace of Base";
-    if (process.argv[3]) song = process.argv[3]
+function spotifyCommand(song) {
+    if (!song) song = "The Sign Ace of Base";
 
     spotify.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
         if (err) {
@@ -86,7 +86,7 @@ function spotifyCommand() {
         let trackList = data.tracks.items
         for (let i=0; i<trackList.length; i++){
             let track = trackList[i]
-            
+
             console.log("ARTIST: "+track.artists[0].name)
             console.log("SONG TITLE: "+track.name)
             
@@ -147,6 +147,6 @@ function doItCommand() {
         let command = file.slice(0,i)
         let argument = file.slice(i+1)
         
-        main(command)
+        main(command, argument)
     })
 }
