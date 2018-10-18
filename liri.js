@@ -86,9 +86,15 @@ function spotifyCommand() {
         let trackList = data.tracks.items
         for (let i=0; i<trackList.length; i++){
             let track = trackList[i]
+            
             console.log("ARTIST: "+track.artists[0].name)
             console.log("SONG TITLE: "+track.name)
-            console.log("PREVIEW: "+track.preview_url)
+            
+            let preview
+            if (track.preview_url) preview = track.preview_url
+            else preview = "unavailable"
+            console.log("PREVIEW: "+preview)
+
             console.log("ALBUM NAME: "+track.album.name)
             console.log()
         }
