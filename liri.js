@@ -35,10 +35,18 @@ switch (cmd) {
  * Handler for Bands In Town API command - 
  */
 function bandsInTownCommand() {
-    let artist = ""
+    let artist = "REO Speedwagon"
     if (process.argv[3]) artist = process.argv[3]
-    console.log(keys.bandsInTown.appID)
+    
+    let bitURL = `http://rest.bandsintown.com/artists/${artist}/events?app_id=${keys.bandsInTown.appID}`
 
+    request(bitURL, (error, response,body) => {
+        if (error) {
+            return console.log(error)
+        }
+        let events = JSON.parse(body)
+        console.log(events)
+    })
 
 }
 
