@@ -145,7 +145,7 @@ function doItCommand() {
 
         let i = file.indexOf(",")
         let command = file.slice(0,i)
-        let argument = file.slice(i+1)
+        let argument = file.slice(i+1).replace(/"/g,"")
         
         main(command, argument)
     })
