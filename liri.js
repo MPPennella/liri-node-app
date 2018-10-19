@@ -94,6 +94,9 @@ function spotifyCommand(song) {
         }
 
         let trackList = data.tracks.items
+        if (trackList.length==0) {
+            console.log(`NO MATCH FOUND FOR: ${song}`)
+        }
         for (let i=0; i<trackList.length; i++){
             let track = trackList[i]
 
