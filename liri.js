@@ -71,7 +71,14 @@ function bandsInTownCommand(artist) {
 function logEvent(event)  {
     console.log()
     console.log(event.venue.name)
-    console.log(`${event.venue.city}, ${event.venue.region}, ${event.venue.country}`)
+
+    let location = []
+    location.push(event.venue.city)
+    // Many international locations do not have a 'region' (state)
+    if (event.venue.region != "") location.push(event.venue.region)
+    location.push(event.venue.country)
+    console.log(`${location.join(", ")}`)
+
     console.log( moment(event.datetime).format("MM/DD/YYYY") )
 }
 
