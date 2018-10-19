@@ -40,5 +40,9 @@ Only the first result returned by OMDB will be provided. The artist, song title,
 
 
 ### do-what-it-says
+`do-what-it-says` will use the contents of `random.txt` to call one of the other commands.
+`random.txt` should contain a single line in the format `[command],"[argument]"`, where `[command]` is one of the other three commands and `[argument]` is the artist/song/movie name to be searched for.
 
 ![do-what-it-says syntax and output demo](./images/do-it-demo.png)
+
+The console will display what command was executed, and then log the output from that command.
