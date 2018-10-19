@@ -127,20 +127,20 @@ function omdbCommand(title) {
         }
 
         let movie = JSON.parse(body)
-
-        console.log("TITLE: "+movie.Title)
-        console.log("YEAR: "+movie.Year)
-        console.log("IMDB RATING: "+movie.imdbRating)
-        if (movie.Ratings.length>=2) {
-            console.log("ROTTEN TOMATOES RATING: "+movie.Ratings[1].Value)
-        } else {
-            console.log("ROTTEN TOMATOES RATING: Not available")
-        }
-        console.log("COUNTRY: "+movie.Country)
-        console.log("LANGUAGE: "+movie.Language)
-        console.log("PLOT: "+movie.Plot)
-        console.log("ACTORS: "+movie.Actors)
-        
+        if(movie.Response == "True") {
+            console.log("TITLE: "+movie.Title)
+            console.log("YEAR: "+movie.Year)
+            console.log("IMDB RATING: "+movie.imdbRating)
+            if (movie.Ratings && movie.Ratings.length>=2) {
+                console.log("ROTTEN TOMATOES RATING: "+movie.Ratings[1].Value)
+            } else {
+                console.log("ROTTEN TOMATOES RATING: Not available")
+            }
+            console.log("COUNTRY: "+movie.Country)
+            console.log("LANGUAGE: "+movie.Language)
+            console.log("PLOT: "+movie.Plot)
+            console.log("ACTORS: "+movie.Actors)
+        } else console.log(`COULDN'T FIND MOVIE: ${title}`)
     })
 }
 
