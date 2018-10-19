@@ -156,6 +156,8 @@ function doItCommand() {
         let i = file.indexOf(",")
         let command = file.slice(0,i)
         let argument = file.slice(i+1).replace(/"/g,"")
+        console.log("RUNNING COMMAND:", command, argument)
+        console.log()
         
         main(command, argument)
     })
