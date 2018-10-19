@@ -155,10 +155,14 @@ function doItCommand() {
 
         let i = file.indexOf(",")
         let command = file.slice(0,i)
-        let argument = file.slice(i+1).replace(/"/g,"")
-        console.log("RUNNING COMMAND:", command, argument)
-        console.log()
-        
-        main(command, argument)
+        if (command != "do-what-it-says"){
+            let argument = file.slice(i+1).replace(/"/g,"")
+            console.log("RUNNING COMMAND:", command, '"'+argument+'"')
+            console.log()
+
+            main(command, argument)
+        } else {
+            console.log("ABORTING COMMAND do-what-it-says TO PREVENT INFINITE LOOP")
+        }
     })
 }
