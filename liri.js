@@ -52,14 +52,17 @@ function bandsInTownCommand(artist) {
             return console.log(error)
         }
 
-        let events = JSON.parse(body)
+        // Check for error responses
+        if ( !(body.trim() == "{warn=Not found}" || body.trim() == "{error=Not Found}") ) {
+            let events = JSON.parse(body)
 
-        if (events.length>0) {
-            console.log(`UPCOMING EVENTS FOR: ${artist}:`)
-            events.map(logEvent)
-        } else {
-            console.log(`NO EVENTS FOUND FOR ARTIST: "${artist}"`)
-        }
+            if (events.length>0) {
+                console.log(`UPCOMING EVENTS FOR: ${artist}`)
+                events.map(logEvent)
+            } else {
+                console.log(`NO EVENTS FOUND FOR: ${artist}`)
+            }
+        } else console.log(`ARTIST "${artist}" NOT FOUND`)
     })
 
 }
