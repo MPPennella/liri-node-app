@@ -31,8 +31,12 @@ Only the first result returned by Spotify will be provided. The artist, song tit
 
 
 ### movie-this
+`movie-this [movie name]` will use the OMDB API to find details about the movie name provided.
+`[movie name]` must be in quotes if it is not a single word - e.g. `Equilibrium` or `"Equilibrium"` is fine, but using `Shaun of the Dead` instead of `"Shaun of the Dead"` will lead to unexpected results. If no `[movie name]` is provided, defaults to `"Mr. Nobody"`
 
 ![movie-this syntax and output demo](./images/movie-demo.png)
+
+Only the first result returned by OMDB will be provided. The artist, song title, and album will be provided, along with a link to a preview of the song if available.
 
 
 ### do-what-it-says
